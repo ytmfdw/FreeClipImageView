@@ -270,6 +270,18 @@ public class MyImageView extends ImageView {
             int newHeight = framingRect.height() + deltaHeight;
             int leftOffset = (screenResolution.x - newWidth) / 2 + currentDx;
             int topOffset = (screenResolution.y - newHeight) / 2 + currentDy;
+            if (leftOffset < 0) {
+                leftOffset = 0;
+            }
+            if (topOffset < 0) {
+                topOffset = 0;
+            }
+            if (leftOffset + newWidth > screenResolution.x) {
+                leftOffset = screenResolution.x - newWidth;
+            }
+            if (topOffset + newHeight > screenResolution.y) {
+                topOffset = screenResolution.y - newHeight;
+            }
             framingRect = new Rect(leftOffset, topOffset, leftOffset + newWidth, topOffset + newHeight);
 //            framingRectInPreview = null;
         } else {
