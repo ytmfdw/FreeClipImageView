@@ -18,6 +18,7 @@ import android.widget.ImageView;
  */
 public class MyImageView extends ImageView {
 
+    //双击回调接口
     public interface OnDoubleClickListener {
         public void getBitmap(Bitmap bitmap);
     }
@@ -328,8 +329,8 @@ public class MyImageView extends ImageView {
                 Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
         draw(canvas);
-        return Bitmap.createBitmap(bitmap, frame.left,
-                frame.top, frame.width(),
-                frame.height());
+        return Bitmap.createBitmap(bitmap, frame.left + 1,
+                frame.top + 1, frame.width() - 2,
+                frame.height() - 2);
     }
 }
